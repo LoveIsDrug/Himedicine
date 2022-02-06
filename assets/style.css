@@ -24,6 +24,37 @@ html {
   text-decoration: none;
 }
 
+.max-width {
+  max-width: 1440px;
+  padding: 0 30px;
+  margin: auto;
+}
+
+.scroll-up-btn{
+  position: fixed;
+  height: 45px;
+  width: 45px;
+  background: var(--subject-color);
+  right: 20px;
+  bottom: 10px;
+  text-align: center;
+  line-height: 45px;
+  font-size: 2em;
+  color: var(--white-color);
+  border-radius: 5px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scroll-up-btn.show{
+  opacity: 1;
+  pointer-events: auto;
+  bottom: 60px;
+}
+
 /* Navbar Styling */
 .navbar {
   position: sticky;
@@ -38,14 +69,46 @@ html {
   transition: all linear 0.4s;
 }
 
+.navbar .max-width {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* navbar sticky styling */
 .navbar.sticky {
   padding: 10px 0;
 }
-
 .navbar.sticky .logo a {
   color: var(--subject-color);
 }
 
+/* navbar logo styling */
+.navbar .logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .logo .logo_image{
+  height: 45px;
+  width: 45px;
+}
+
+.navbar .logo .logo_image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar .logo a {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 3.5em;
+  font-weight: 600;
+  color: #111;
+}
+
+/* navbar menu styling */
 .line-effect {
   width: 0;
   height: 2px;
@@ -54,25 +117,6 @@ html {
   z-index: 6;
   pointer-events: none;
   transition: all 0.25s linear;
-}
-
-.max-width {
-  max-width: 1440px;
-  padding: 0 30px;
-  margin: auto;
-}
-
-.navbar .max-width {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.navbar .logo a {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 3.5em;
-  font-weight: 600;
-  color: #111;
 }
 
 .menu-btn {
@@ -94,6 +138,7 @@ html {
   cursor: pointer;
 }
 
+/* popup window styling */
 .popup {
   position: fixed;
   top: 0;
@@ -139,6 +184,120 @@ html {
   padding: 0 40px;
   box-sizing: border-box;
   margin-bottom: 60px;
+}
+
+
+form .txt_field {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+.txt_field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.txt_field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.txt_field span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--subject-color);
+  transition: 0.5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+  top: -5px;
+  color: var(--subject-color);
+}
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+  width: 100%;
+}
+
+.dropdown{
+  position: relative;
+  width: 100%;
+  height: 50px;
+}
+
+.dropdown::before{
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 9px;
+  border: 2px solid #333;
+  border-top: 2px solid var(--white-color);
+  border-right: 2px solid var(--white-color);
+  transform: rotate(-45deg);
+  transition: 0.5s;
+  pointer-events: none;
+  right: 20px;
+  top: 15px;
+  z-index: 10000;
+}
+
+.dropdown.active::before{
+  top: 20px;
+  transform: rotate(-225deg);
+}
+
+.dropdown input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background: var(--white-color);
+  font-size: 1.7em;
+  border: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+
+.dropdown .option{
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  background: var(--white-color);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  display: none;
+  z-index: 12;
+}
+
+.dropdown.active .option{
+  display: block;
+}
+
+.dropdown .option div {
+  font-size: 1.7em;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.dropdown .option div:hover{
+  background: var(--subject-color);
+  color: var(--white-color);
 }
 
 .btn-container{
@@ -273,120 +432,6 @@ html {
   }
 }
 
-
-form .txt_field {
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 30px 0;
-}
-.txt_field input {
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
-  border: none;
-  background: none;
-  outline: none;
-}
-.txt_field label {
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  color: #adadad;
-  transform: translateY(-50%);
-  font-size: 16px;
-  pointer-events: none;
-  transition: 0.5s;
-}
-.txt_field span::before {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: var(--subject-color);
-  transition: 0.5s;
-}
-.txt_field input:focus ~ label,
-.txt_field input:valid ~ label {
-  top: -5px;
-  color: var(--subject-color);
-}
-.txt_field input:focus ~ span::before,
-.txt_field input:valid ~ span::before {
-  width: 100%;
-}
-
-.dropdown{
-  position: relative;
-  width: 100%;
-  height: 50px;
-}
-
-.dropdown::before{
-  content: '';
-  position: absolute;
-  width: 8px;
-  height: 9px;
-  border: 2px solid #333;
-  border-top: 2px solid var(--white-color);
-  border-right: 2px solid var(--white-color);
-  transform: rotate(-45deg);
-  transition: 0.5s;
-  pointer-events: none;
-  right: 20px;
-  top: 15px;
-  z-index: 10000;
-}
-
-.dropdown.active::before{
-  top: 20px;
-  transform: rotate(-225deg);
-}
-
-.dropdown input{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  background: var(--white-color);
-  font-size: 1.7em;
-  border: none;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  padding: 12px 20px;
-  border-radius: 10px;
-}
-
-.dropdown .option{
-  position: absolute;
-  top: 70px;
-  width: 100%;
-  background: var(--white-color);
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  overflow: hidden;
-  display: none;
-  z-index: 12;
-}
-
-.dropdown.active .option{
-  display: block;
-}
-
-.dropdown .option div {
-  font-size: 1.7em;
-  padding: 12px 20px;
-  cursor: pointer;
-}
-
-.dropdown .option div:hover{
-  background: var(--subject-color);
-  color: var(--white-color);
-}
-
 /* Home styling  */
 .home-content{
   text-align: center;
@@ -443,7 +488,7 @@ section {
   font-size: 4.5em;
   font-weight: 500;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -472,10 +517,12 @@ section {
   font-size: 2.5em;
 }
 
+/* shop section styling */
 .shop-section .products-container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 2rem;
+  margin-top: 40px;
 }
 
 .shop-section .products-container .product{
@@ -512,6 +559,7 @@ section {
   font-size: 2em;
 }
 
+/* product preview styling */
 .products-preview{
   position: fixed;
   top: 0;
@@ -588,6 +636,7 @@ section {
   display: inline-block;
 }
 
+/* team styling */
 .team .carousel .card {
   position: relative;
   background: var(--white-color);
@@ -720,6 +769,7 @@ section {
   background: #3d6ef7 !important;
 }
 
+/* contact styling */
 .contact .contact-content {
     display: flex;
     flex-wrap: wrap;
@@ -836,7 +886,7 @@ section {
   background: #5029bc;
 }
 
-
+/* team information popup  */
 .team-infor .information .left {
   width: 45%;
   border-right: 1px solid #ccc;
@@ -948,6 +998,7 @@ section {
   font-weight: 500;
 }
 
+/* Resonsive  */
 @media (max-width: 1160px) {
 }
 
@@ -990,6 +1041,18 @@ section {
   left: 50%;
   transform: translateX(-50%);
  }
+}
+
+.footer {
+  background-color: var(--subject-color);
+  font-size: 2em;
+  text-align: center;
+  color: #fff;
+}
+
+.footer p{
+  font-weight: 500;
+  padding: 10px 0;
 }
 
 @media (max-width: 947px) {
