@@ -32,7 +32,7 @@ $(document).ready(function(){
                 items: 1,
                 nav: false,
             },
-            834:{
+            1000:{
                 items: 2,
                 nav: false,
             },
@@ -153,6 +153,19 @@ let dropdown = document.querySelector('.dropdown');
 dropdown.onclick = function(){
     dropdown.classList.toggle('active');
 }
+
+// video popup 
+document.querySelectorAll('.video-container video').forEach(video =>{
+  video.onclick = () => {
+    document.querySelector('.video-popup').style.display = 'block';
+  }
+});
+
+document.querySelector('.video-popup .close-btn').onclick = () =>{
+  document.querySelector('.video-popup').style.display = 'none';
+}
+
+
 
 window.addEventListener("DOMContentLoaded", function () {
 
