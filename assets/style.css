@@ -998,6 +998,18 @@ section {
   font-weight: 500;
 }
 
+.footer {
+  background-color: var(--subject-color);
+  font-size: 2em;
+  text-align: center;
+  color: #fff;
+}
+
+.footer p{
+  font-weight: 500;
+  padding: 10px 0;
+}
+
 /* Resonsive  */
 @media (max-width: 1160px) {
 }
@@ -1041,18 +1053,6 @@ section {
   left: 50%;
   transform: translateX(-50%);
  }
-}
-
-.footer {
-  background-color: var(--subject-color);
-  font-size: 2em;
-  text-align: center;
-  color: #fff;
-}
-
-.footer p{
-  font-weight: 500;
-  padding: 10px 0;
 }
 
 @media (max-width: 947px) {
