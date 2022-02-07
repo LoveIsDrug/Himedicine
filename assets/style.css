@@ -1056,6 +1056,10 @@ section {
 }
 
 @media (max-width: 947px) {
+  section{
+    padding: 70px 0;
+  }
+
   .max-width {
     padding: 0 50px;
   }
@@ -1147,6 +1151,10 @@ section {
 }
 
 @media (max-width: 690px) {
+  section{
+    padding: 50px 0;
+  }
+
   .max-width {
     padding: 0 23px;
   }
@@ -1164,20 +1172,14 @@ section {
   }
   
   .title {
-    position: relative;
     font-size: 3.5em;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 80px;
-    font-family: "Ubuntu", sans-serif;
+    margin-bottom: 50px;
 }
 
 @media (max-width: 421px) {
   .team-infor .information .left h4 {
-    font-family: "Ubuntu", sans-serif;
     padding-top: 10px;
     font-size: 2.2em;
-    line-height: 2em;
 }
 
 .team-infor .information .left .social-icons .social-icon {
@@ -1189,12 +1191,12 @@ section {
   font-size: 3.7em;
 }
 
-  .team-infor .information .right .box h1 {
+.team-infor .information .right .box h1 {
     font-size: 2.5em;
     text-transform: uppercase;
 }
 
-  .team-infor .information .right .box .text p {
+.team-infor .information .right .box .text p {
     display: flex;
     margin-right: 10px;
     font-size: 1.4em;
