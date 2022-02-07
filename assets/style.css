@@ -42,7 +42,7 @@ html {
   font-size: 2em;
   color: var(--white-color);
   border-radius: 5px;
-  z-index: 9999;
+  z-index: 10;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
@@ -1148,5 +1148,13 @@ section {
 @media (max-width: 690px) {
   .max-width {
     padding: 0 23px;
+  }
+  .navbar .logo .logo_image{
+    width: 35px;
+    height: 35px;
+  }
+
+  .navbar .logo a{
+    font-size: 2.7em;
   }
 }
